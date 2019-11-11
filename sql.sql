@@ -1,33 +1,25 @@
-create table border(
-    id int(11) NOT NULL AUTO_INCREMENT,
-    title varchar(45) NOT NULL,
-    description text NOT NULL,
-    authod_id int(11) NOT NULL,
-    likes int(11) NULL,
-    created datetime NOT NULL,
-    PRIMARY KEY(id)
-) engine=InnoDB;
-
-insert into border(
-    title, description, authod_id, likes, created
-) VALUES('test','this is test', 1, 0, NOW())
-
-create table authod(
-    id int(11) NOT NULL AUTO_INCREMENT,
-    name varchar(30) NOT NULL,
-    profile varchar(200) NULL,
-    PRIMARY KEY(id)
+CREATE TABLE user(
+    'id' INT NOT NULL AUTO_INCREMENT,
+    'name' VARCHAR(20) NOT NULL,
+    'password' VARCHAR(255) NOT NULL,
+    'created' DATETIME NOT NULL,
+    'phonenum' VARCHAR(20) NOT NULL,
+    'age' VARCHAR(8) NOT NULL,
+    'sex' VARCHAR(1),
+    PRIMARY KEY ('id'),
+    UNIQUE KEY ('name')
 );
 
-insert into authod (name, profile) VALUES('jingyu', 'developer');
-insert into authod (name, profile) VALUES('jinwoong', 'developer');
-insert into authod (name, profile) VALUES('aly', 'Art');
+CREATE TABLE content(
+    'id' INT NOT NULL AUTO_INCREMENT,
+    'content' TEXT NOT NULL,
+    'created' DATETIME NOT NULL.
+    PRIMARY KEY ('id')
+);
 
-alter table topic add authod_id int(11);
-
-update topic set authod_id = 1 where id = 13;
-update topic set authod_id = 2 where id = 14;
-update topic set authod_id = 2 where id = 15;
-update topic set authod_id = 3 where id = 17;
-
-ALTER TABLE border CHANGE COLUMN authod_id author_id int(11) NOT NULL;
+CREATE TABLE bookmark(
+    'id' INT NOT NULL AUTO_INCREMENT,
+    'userid' INT NOT NULL,
+    'contentid' INT NOT NULL,
+    PRIMARY KEY ('id')
+);
